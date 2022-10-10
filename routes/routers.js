@@ -9,7 +9,7 @@ const pool = require('../config/database');
 const userMiddleware = require('../middleware/users.js');
 
 // routes/router.js
-router.get("/", (req, resp) => {
+router.get("/getdata", (req, resp) => {
   pool.query("select * from user", (err, result) => {
 
     if (err) {
