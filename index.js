@@ -14,17 +14,17 @@ app.use(cors());
 // add routes
 const router = require('./routes/routers');
 app.use('/api', router);
-app.get("/", (req, resp) => {
-    pool.query("select * from user", (err, result) => {
+// app.get("/", (req, resp) => {
+//     pool.query("select * from user", (err, result) => {
   
-      if (err) {
-        resp.send("error")
-      }
-      else {
-        resp.send(result)
-      }
-    })
-  });
+//       if (err) {
+//         resp.send("error")
+//       }
+//       else {
+//         resp.send(result)
+//       }
+//     })
+//   });
 
 // run server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
