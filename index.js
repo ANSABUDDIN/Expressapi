@@ -50,15 +50,18 @@ app.use(cors());
 //   );
 // });
 app.get("/", (req, resp) => {
-    pool.query("select * from user", (err, result) => {
+  return res.status(409).send({
+              msg: 'This email is already in use!'
+            });
+    // pool.query("select * from user", (err, result) => {
   
-      if (err) {
-        resp.send("error")
-      }
-      else {
-        resp.send(result)
-      }
-    })
+    //   if (err) {
+    //     resp.send("error")
+    //   }
+    //   else {
+    //     resp.send(result)
+    //   }
+    // })
   });
 
 // run server
