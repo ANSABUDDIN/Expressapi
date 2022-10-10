@@ -49,17 +49,17 @@ app.post('/sign-up', userMiddleware.validateRegister, (req, res, field) => {
     }
   );
 });
-app.get("/", (req, resp) => {
-    pool.query("select * from user", (err, result) => {
+// app.get("/", (req, resp) => {
+//     pool.query("select * from user", (err, result) => {
   
-      if (err) {
-        resp.send("error")
-      }
-      else {
-        resp.send(result)
-      }
-    })
-  });
+//       if (err) {
+//         resp.send("error")
+//       }
+//       else {
+//         resp.send(result)
+//       }
+//     })
+//   });
 
 // run server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
