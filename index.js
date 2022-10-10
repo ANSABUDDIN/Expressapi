@@ -29,8 +29,8 @@ app.post('/sign-up', userMiddleware.validateRegister, (req, res, field) => {
           msg: 'This email is already in use!'
         });
       } else {
-        // const salt = genSaltSync(10);
-        // mydata.password = hashSync(mydata.password, salt);
+        const salt = genSaltSync(10);
+        mydata.password = hashSync(mydata.password, salt);
         pool.query('INSERT INTO user SET ?', mydata, (error, result) => {
 
           // if (error) error;
@@ -49,17 +49,17 @@ app.post('/sign-up', userMiddleware.validateRegister, (req, res, field) => {
     }
   );
 });
-// app.get("/", (req, resp) => {
-//     pool.query("select * from user", (err, result) => {
+app.get("/", (req, resp) => {
+    pool.query("select * from user", (err, result) => {
   
-//       if (err) {
-//         resp.send("error")
-//       }
-//       else {
-//         resp.send(result)
-//       }
-//     })
-//   });
+      if (err) {
+        resp.send("error")
+      }
+      else {
+        resp.send(result)
+      }
+    })
+  });
 
 // run server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
