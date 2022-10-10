@@ -13,7 +13,7 @@ app.use(cors());
 
 // add routes
 const router = require('./routes/routers');
-// app.use('/api', router);
+app.use('/api', router);
 app.get("/", (req, resp) => {
     pool.query("select * from user", (err, result) => {
   
