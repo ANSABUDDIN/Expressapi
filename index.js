@@ -29,8 +29,8 @@ app.post('/sign-up', userMiddleware.validateRegister, (req, res, field) => {
           msg: 'This email is already in use!'
         });
       } else {
-        const salt = genSaltSync(10);
-        mydata.password = hashSync(mydata.password, salt);
+        // const salt = genSaltSync(10);
+        // mydata.password = hashSync(mydata.password, salt);
         pool.query('INSERT INTO user SET ?', mydata, (error, result) => {
 
           // if (error) error;
