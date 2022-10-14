@@ -50,19 +50,16 @@ app.use(cors());
 //   );
 // });
 app.get("/", (req, resp) => {
-  return res.status(409).send({
-              msg: 'This email is already in use!'
-            });
-    // pool.query("select * from user", (err, result) => {
+    pool.query("select * from user", (err, result) => {
   
-    //   if (err) {
-    //     resp.send("error")
-    //   }
-    //   else {
-    //     resp.send(result)
-    //   }
-    // })
-  });
+      if (err) {
+        resp.send("error")
+      }
+      else {
+        resp.send(result)
+      }
+    })
+});
 
 // run server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
